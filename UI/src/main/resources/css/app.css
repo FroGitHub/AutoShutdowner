@@ -1,0 +1,12 @@
+.root {
+    -fx-font-family: "Segoe UI";
+}
+
+.label {
+    -fx-font-size: 16px;
+}
+
+.button {
+    -fx-background-radius: 10;
+    -fx-cursor: hand;
+}

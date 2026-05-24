@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="ui.controller.DashboardController">
+
+    <fx:define>
+        <ToggleGroup fx:id="modeGroup"/>
+    </fx:define>
+
+    <left>
+        <VBox spacing="10" style="-fx-padding: 15;">
+            <Label text="Open Windows" style="-fx-font-weight: bold;"/>
+            <ListView fx:id="windowsList" prefWidth="200" VBox.vgrow="ALWAYS"/>
+            <Button text="Add →" onAction="#addToShutdownList" maxWidth="Infinity"/>
+        </VBox>
+    </left>
+
+    <center>
+        <VBox spacing="20" style="-fx-padding: 15;">
+            <Label text="Shutdown Settings" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+
+            <!-- MODE SELECT -->
+            <HBox spacing="20">
+                <RadioButton fx:id="durationMode" text="Duration"
+                             toggleGroup="$modeGroup" selected="true"/>
+                <RadioButton fx:id="exactMode" text="Exact time"
+                             toggleGroup="$modeGroup"/>
+            </HBox>
+
+            <StackPane alignment="TOP_LEFT">
+                <!-- MODE 1: Duration -->
+                <VBox fx:id="durationBox" spacing="10">
+                    <Label text="Run after:"/>
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <TextField fx:id="hoursField" promptText="0" prefWidth="60" text="0"/>
+                        <Label text="h"/>
+                        <TextField fx:id="minutesField" promptText="30" prefWidth="60" text="30"/>
+                        <Label text="m"/>
+                    </HBox>
+                </VBox>
+
+                <!-- MODE 2: Exact time -->
+                <VBox fx:id="exactBox" spacing="10" visible="false">
+                    <Label text="Shutdown at:"/>
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <TextField fx:id="hourField" promptText="23" prefWidth="60"/>
+                        <Label text=":"/>
+                        <TextField fx:id="minuteField" promptText="00" prefWidth="60"/>
+                    </HBox>
+                </VBox>
+            </StackPane>
+
+            <Separator/>
+
+            <Button fx:id="startButton" text="Start Timer"
+                    maxWidth="Infinity" prefHeight="40"
+                    style="-fx-font-size: 14px; -fx-base: #2ecc71;"/>
+        </VBox>
+    </center>
+
+    <right>
+        <VBox spacing="10" style="-fx-padding: 15;">
+            <Label text="Shutdown List" style="-fx-font-weight: bold;"/>
+            <ListView fx:id="shutdownList" prefWidth="200" VBox.vgrow="ALWAYS"/>
+            <Button text="← Remove" onAction="#removeFromShutdownList" maxWidth="Infinity"/>
+        </VBox>
+    </right>
+
+</BorderPane>
