@@ -13,9 +13,25 @@
 
     <left>
         <VBox spacing="10" style="-fx-padding: 15;">
-            <Label text="Open Windows" style="-fx-font-weight: bold;"/>
-            <ListView fx:id="windowsList" prefWidth="200" VBox.vgrow="ALWAYS"/>
-            <Button text="Add →" onAction="#addToShutdownList" maxWidth="Infinity"/>
+
+            <HBox spacing="5" alignment="CENTER_LEFT">
+                <Label text="Open Windows" style="-fx-font-weight: bold;"/>
+
+                <Button text="⟳"
+                        onAction="#refreshWindowsList"
+                        prefWidth="28"
+                        prefHeight="28"
+                        focusTraversable="false"
+                        style="-fx-padding: 0; -fx-focus-color: transparent; -fx-faint-focus-color: transparent;"/>
+            </HBox>
+
+            <ListView fx:id="windowsList"
+                      prefWidth="200"
+                      VBox.vgrow="ALWAYS"/>
+
+            <Button text="Add →"
+                    onAction="#addToShutdownList"
+                    maxWidth="Infinity"/>
         </VBox>
     </left>
 

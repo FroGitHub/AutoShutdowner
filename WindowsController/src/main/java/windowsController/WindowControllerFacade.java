@@ -29,6 +29,11 @@ public class WindowControllerFacade {
         return nameToPidMap.keySet().stream().sorted().toList();
     }
 
+    public List<String> getRefreshedWindowNames() {
+        refreshWindowList();
+        return nameToPidMap.keySet().stream().sorted().toList();
+    }
+
     private void closeWindow(String windowName) {
         Integer pid = nameToPidMap.get(windowName);
         if (pid != null) {

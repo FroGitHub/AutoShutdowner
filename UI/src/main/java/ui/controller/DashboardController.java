@@ -172,4 +172,19 @@ public class DashboardController {
             windows.add(selected);
         }
     }
+
+    @FXML
+    public void refreshWindowsList() {
+        List<String> windowNames = windowControllerFacade.getRefreshedWindowNames();
+
+        shutdownTargets.setAll(shutdownTargets.stream()
+                .filter(windowNames::contains)
+                .toList()
+        );
+
+        windows.setAll(windowNames.stream()
+                .filter(a -> !shutdownTargets.contains(a))
+                .toList()
+        );
+    }
 }
